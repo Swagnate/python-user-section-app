@@ -1,0 +1,33 @@
+<!-- templates/sections/section_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список секций</title>
+</head>
+
+<body>
+    <h1>Список секций</h1>
+    <a href="{% url 'create_section' %}">Создать секцию</a><br>
+    <ul>
+        {% for section in sections %}
+        <li>
+            {{ section.name }}
+            <a href="{% url 'delete_section' section.id %}">Удалить</a>
+            <ul>
+                {% for user in section.users.all %}
+                <li>
+                    {{ user.username }}
+                    <a href="{% url 'remove_user_from_section' section.id user.id %}">Удалить из секции</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'user_list' %}">Перейти к пользователям</a>
+</body>
+
+</html>

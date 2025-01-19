@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Удалить секцию</title>
+</head>
+
+<body>
+    <h1>Удалить секцию</h1>
+    <p>Вы уверены, что хотите удалить секцию "{{ section.name }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Удалить</button>
+    </form>
+    <a href="{% url 'section_list' %}">Назад к списку секций</a>
+</body>
+
+</html>
